@@ -230,8 +230,10 @@ export default function Home() {
               <div>
                 <h3 className="font-mono text-xs text-slate-500 uppercase mb-2">About</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Monitor fishing vessel activity and detect AIS gaps where vessels go dark, 
-                  potentially indicating illegal fishing activity.
+                  FISHY is an investigative workspace for monitoring fishing activity near EEZ
+                  boundaries. It combines vessel presence, AIS gap events, SAR detections, and
+                  path prediction so you can assess where a vessel may have operated while it was
+                  dark.
                 </p>
               </div>
 
@@ -239,7 +241,7 @@ export default function Home() {
               <div className="pt-3 border-t border-slate-800">
                 <h3 className="font-mono text-xs text-slate-500 uppercase mb-2">Data Source</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  AIS apparent fishing effort from{" "}
+                  Fishing effort, vessel activity, and gap events come from{" "}
                   <a
                     href="https://globalfishingwatch.org"
                     target="_blank"
@@ -248,19 +250,42 @@ export default function Home() {
                   >
                     Global Fishing Watch
                   </a>
-                  . Brighter areas indicate more fishing hours.
+                  , with EEZ boundaries rendered from Marine Regions and optional SAR detections
+                  layered on top of the map for cross-checking dark contacts.
                 </p>
+              </div>
+
+              {/* What You Can Inspect */}
+              <div className="pt-3 border-t border-slate-800">
+                <h3 className="font-mono text-xs text-slate-500 uppercase mb-2">What You Can Inspect</h3>
+                <ul className="text-xs text-slate-400 space-y-1.5">
+                  <li>Vessels operating inside or near a selected EEZ buffer</li>
+                  <li>AIS transmission gaps and how long each vessel stayed dark</li>
+                  <li>SAR detections with matched and unmatched AIS contacts</li>
+                  <li>Predicted post-gap positions with an uncertainty cloud</li>
+                </ul>
               </div>
 
               {/* How to Use */}
               <div className="pt-3 border-t border-slate-800">
                 <h3 className="font-mono text-xs text-slate-500 uppercase mb-2">How to Use</h3>
                 <ul className="text-xs text-slate-400 space-y-1.5">
-                  <li>1. Select an EEZ region to monitor</li>
-                  <li>2. Scan vessels for AIS gaps</li>
-                  <li>3. Click a vessel to see gap details</li>
-                  <li>4. Use Predict to estimate positions during dark periods</li>
+                  <li>1. Select an EEZ region and adjust the time window</li>
+                  <li>2. Review the vessel list and filter out unwanted flag states</li>
+                  <li>3. Open a vessel to inspect recent AIS gap events</li>
+                  <li>4. Run Predict on a gap to estimate where the vessel may have gone</li>
+                  <li>5. Toggle SAR detections to compare predicted movement with radar contacts</li>
                 </ul>
+              </div>
+
+              {/* Prediction */}
+              <div className="pt-3 border-t border-slate-800">
+                <h3 className="font-mono text-xs text-slate-500 uppercase mb-2">Prediction Engine</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Path prediction uses the Python LSTM service when available and falls back to a
+                  dead-reckoning model in the app when the ML server is offline, so the workflow
+                  remains usable during development and demos.
+                </p>
               </div>
             </div>
           </div>

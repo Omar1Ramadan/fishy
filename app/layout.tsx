@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fishy - Dark Vessel Monitor",
+  title: "🐟 Fishy - Dark Vessel Monitor",
   description:
-    "Track fishing vessels, detect AIS gaps, and monitor dark activity in protected waters",
+    "Inspect fishing activity near EEZ boundaries, detect AIS gaps, compare SAR detections, and predict likely vessel movement during dark periods.",
 };
 
 export default function RootLayout({
